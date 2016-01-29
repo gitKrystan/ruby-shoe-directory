@@ -22,6 +22,17 @@ get '/stores/:id' do
   erb :store
 end
 
+patch '/stores/:id' do
+  id = params[:id]
+  name = params[:store_name]
+  store = Store.find(id)
+  store.update(name: name)
+
+  redirect "stores/#{id}/edit"
+end
+
 get '/stores/:id/edit' do
+  @store = Store.find(params[:id])
+  @brands = @store.brands.order(:name)
   erb :admin_store
 end

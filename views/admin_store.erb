@@ -1,5 +1,23 @@
-<h1>ADMIN: Store Pages</h1>
+<h1>ADMIN: <%= @store.name %></h1>
 
-<p>
-  UNDER CONSTRUCTION
-</p>
+<div class="row">
+  <!-- Stores -->
+  <div class="col-sm-4">
+    <form class="form-inline form-group" action="/stores/<%= @store.id %>" method="post">
+      <div class="input-group">
+        <input type="text" name="store_name" class="form-control" value="<%= @store.name %>">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" name="_method" value="patch">Update Name</button>
+        </span>
+      </div><!-- /input-group -->
+    </form>
+
+    <% if @brands.any? %>
+      <ul class="nav nav-pills nav-stacked">
+        <% @brands.each do |brand| %>
+          <li><a href="/brands/<%= brand.id %>/edit"><%= brand.name %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div><!-- Stores -->
+</div>

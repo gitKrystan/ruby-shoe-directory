@@ -9,3 +9,17 @@ feature "Adding a store" do
     expect(page).to have_content 'Test Store'
   end
 end
+
+feature "Updating a store" do
+  before do
+    create_test_store
+  end
+
+  scenario "allows the administrator to change a store" do
+    visit '/admin'
+    click_link 'Test Store'
+    fill_in 'store_name', with: 'New Store Name'
+    click_button 'Update Name'
+    expect(page).to have_content 'New Store Name'
+  end
+end

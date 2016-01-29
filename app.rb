@@ -1,20 +1,27 @@
-require('bundler/setup')
+require "bundler/setup"
 require "pry"
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get '/' do
-  erb(:index)
+  erb :index
 end
 
 get '/admin' do
-  erb(:admin)
+  @stores = Store.order(:name)
+  erb :admin
+end
+
+post '/stores' do
+  Store.create(name: params[:store_name])
+
+  redirect '/admin'
 end
 
 get '/stores/:id' do
-  erb(:store)
+  erb :store
 end
 
 get '/stores/:id/edit' do
-  erb(:admin_store)
+  erb :admin_store
 end

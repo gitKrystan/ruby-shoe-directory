@@ -16,6 +16,9 @@ RSpec.configure do |config|
     Brand.all.each do |brand|
       brand.destroy
     end
+    Store.all.each do |store|
+      store.destroy
+    end
   end
 end
 

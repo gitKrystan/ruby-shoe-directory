@@ -1,14 +1,21 @@
 <h1>ADMIN: <%= @store.name %></h1>
 
 <div class="row">
-  <!-- Stores -->
   <div class="col-sm-4">
+    <!-- Edit Store -->
     <form class="form-inline form-group" action="/stores/<%= @store.id %>" method="post">
       <div class="input-group">
         <input type="text" name="store_name" class="form-control" value="<%= @store.name %>">
         <span class="input-group-btn">
           <button class="btn btn-default" type="submit" name="_method" value="patch">Update Name</button>
         </span>
+      </div><!-- /input-group -->
+    </form>
+
+    <!-- Delete Store -->
+    <form class="form-inline form-group" action="/stores/<%= @store.id %>" method="post">
+      <div class="input-group">
+        <button class="btn btn-danger" type="submit" name="_method" value="delete">Delete Store</button>
       </div><!-- /input-group -->
     </form>
 
@@ -19,5 +26,5 @@
         <% end %>
       </ul>
     <% end %>
-  </div><!-- Stores -->
+  </div>
 </div>

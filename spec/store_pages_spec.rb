@@ -22,4 +22,12 @@ feature "Updating a store" do
     click_button 'Update Name'
     expect(page).to have_content 'New Store Name'
   end
+
+  scenario "allows the administrator to delete a store" do
+    visit '/admin'
+    click_link 'Test Store'
+    click_button 'Delete Store'
+    expect(page).to have_content 'OUR STORES'
+    expect(page).not_to have_content 'Test Store'
+  end
 end

@@ -28,7 +28,15 @@ patch '/stores/:id' do
   store = Store.find(id)
   store.update(name: name)
 
-  redirect "stores/#{id}/edit"
+  redirect "/stores/#{id}/edit"
+end
+
+delete '/stores/:id' do
+  id = params[:id]
+  store = Store.find(id)
+  store.destroy
+
+  redirect "/admin"
 end
 
 get '/stores/:id/edit' do

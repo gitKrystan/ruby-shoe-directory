@@ -71,6 +71,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -104,6 +106,7 @@ DEPENDENCIES
   rake
   rspec
   selenium-webdriver
+  shoulda-matchers
   sinatra
   sinatra-activerecord
   sinatra-contrib

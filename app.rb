@@ -4,6 +4,8 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get '/' do
+  @stores = Store.order(:name)
+  @brands = Brand.order(:name)
   erb :index
 end
 
@@ -24,6 +26,9 @@ post '/stores' do
 end
 
 get '/stores/:id' do
+  id = params[:id]
+  @store = Store.find(id)
+  @store_brands = @store.brands.order(:name)
   erb :store
 end
 

@@ -18,3 +18,19 @@ Sticky Footer by Ryan Fait
 http://ryanfait.com/
 
 */
+
+.store-box {
+	height: 100px;
+	text-align: center;
+	background-color: salmon;
+	border: none;
+	margin: 5px -5px;
+}
+
+.store-box h1 {
+	font-size: 2em;
+	margin: 0;
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+}

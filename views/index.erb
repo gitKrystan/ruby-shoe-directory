@@ -1,5 +1,19 @@
 <h1>OUR STORES</h1>
 
-<p>
-  UNDER CONSTRUCTION
-</p>
+<% if @stores.any? %>
+  <div class="row">
+    <% @stores.each do |store| %>
+      <a href="/stores/<%= store.id %>">
+        <div class="col-sm-3">
+          <div class="well store-box">
+            <h1><%= store.name %></h1>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<% else %>
+  <div class="jumbotron">
+    <h1>Add stores and brands by clicking the admin link below!</h1>
+  </div>
+<% end %>

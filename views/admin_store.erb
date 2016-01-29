@@ -23,18 +23,7 @@
 
 <div class="row">
   <!-- Brand List -->
-  <div class="col-sm-6 store-brand-list">
-    <% if @store_brands.any? %>
-      <h5>Brands carried by this store:</h5>
-      <ul class="nav nav-pills nav-stacked">
-        <% @store_brands.each do |brand| %>
-          <li><a href="/brands/<%= brand.id %>/edit"><%= brand.name %></a></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <h5>No brands currently carried.</h5>
-    <% end %>
-  </div>
+  <%= erb :brand_list %>
 
   <!-- Add Brand List -->
   <div class="col-sm-6 add-brand-list">

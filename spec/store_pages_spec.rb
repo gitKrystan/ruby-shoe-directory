@@ -46,3 +46,17 @@ feature "Connecting brands to a store" do
     expect(find('.add-brand-list')).not_to have_content 'Test Brand'
   end
 end
+
+feature "Viewing a store's brands" do
+  before do
+    test_store = create_test_store
+    create_test_brand(test_store)
+  end
+
+  scenario "allows the administrator to add a brand to a store" do
+    visit '/'
+    click_link 'Test Store'
+    expect(page).to have_content 'Test Store'
+    expect(page).to have_content 'Test Brand'
+  end
+end

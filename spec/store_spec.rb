@@ -12,4 +12,11 @@ describe(Store) do
     test_store = Store.create(name: '')
     expect(test_store.save).to(eq(false))
   end
+
+  describe('#capitalize') do
+    it ('capitalizes the name before save') do
+      test_store = create_test_store
+      expect(test_store.name).to(eq("Test Store"))
+    end
+  end
 end

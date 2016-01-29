@@ -12,4 +12,11 @@ describe(Brand) do
     test_brand = Brand.create(name: '')
     expect(test_brand.save).to(eq(false))
   end
+
+  describe('#capitalize') do
+    it ('capitalizes the name before save') do
+      test_brand = create_test_brand
+      expect(test_brand.name).to(eq("Test Brand"))
+    end
+  end
 end

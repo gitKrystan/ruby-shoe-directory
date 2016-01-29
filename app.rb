@@ -16,12 +16,26 @@ get '/admin' do
 end
 
 post '/brands' do
-  Brand.create(name: params[:brand_name])
+  brand = Brand.create(name: params[:brand_name])
+
+  if brand.invalid?
+    @errors = brand.errors.full_messages
+    @back_to = "/admin"
+    return erb :errors
+  end
+
   redirect '/admin'
 end
 
 post '/stores' do
-  Store.create(name: params[:store_name])
+  store = Store.create(name: params[:store_name])
+
+  if store.invalid?
+    @errors = store.errors.full_messages
+    @back_to = "/admin"
+    return erb :errors
+  end
+
   redirect '/admin'
 end
 
@@ -37,6 +51,12 @@ patch '/stores/:id' do
   name = params[:store_name]
   store = Store.find(id)
   store.update(name: name)
+
+  if store.invalid?
+    @errors = store.errors.full_messages
+    @back_to = "/stores/#{id}/edit"
+    return erb :errors
+  end
 
   redirect "/stores/#{id}/edit"
 end
@@ -63,4 +83,11 @@ get '/stores/:id/edit' do
   @store_brands = @store.brands.order(:name)
   @add_brands = Brand.order(:name) - @store_brands
   erb :admin_store
+end
+
+helpers do
+  def random_color_class
+    color_number = rand(5).to_s
+    "color" << color_number
+  end
 end

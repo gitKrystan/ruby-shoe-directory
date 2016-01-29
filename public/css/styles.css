@@ -22,7 +22,6 @@ http://ryanfait.com/
 .store-box {
 	height: 100px;
 	text-align: center;
-	background-color: salmon;
 	border: none;
 	margin: 5px -5px;
 }
@@ -33,4 +32,24 @@ http://ryanfait.com/
 	color: white;
 	display: inline-block;
 	vertical-align: middle;
+}
+
+.color0 {
+	background-color: #2e0927;
+}
+
+.color1 {
+	background-color: #d90000;
+}
+
+.color2 {
+	background-color: #ff2d00;
+}
+
+.color3 {
+	background-color: #ff8c00;
+}
+
+.color4 {
+	background-color: #04756f;
 }

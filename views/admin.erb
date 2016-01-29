@@ -2,7 +2,7 @@
 
 <div class="row">
   <!-- Stores -->
-  <div class="col-sm-4">
+  <div class="col-sm-6">
     <h5>OUR STORES</h5>
     <form class="form-inline form-group" action="/stores" method="post">
       <div class="input-group">
@@ -21,4 +21,29 @@
       </ul>
     <% end %>
   </div><!-- Stores -->
+
+  <!-- Brands -->
+  <div class="col-sm-6">
+    <h5>OUR BRANDS</h5>
+    <form class="form-inline form-group" action="/brands" method="post">
+      <div class="input-group">
+        <input type="text" name="brand_name" class="form-control" placeholder="Name">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit">Add Brand</button>
+        </span>
+      </div><!-- /input-group -->
+    </form>
+
+    <% if @brands.any? %>
+      <ul class="nav nav-pills nav-stacked">
+        <% @brands.each do |brand| %>
+          <li>
+            <!-- <a href="/brands/<%= brand.id %>/edit"> -->
+              <%= brand.name %>
+            <!-- </a> -->
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div><!-- Brands -->
 </div>

@@ -9,12 +9,17 @@ end
 
 get '/admin' do
   @stores = Store.order(:name)
+  @brands = Brand.order(:name)
   erb :admin
+end
+
+post '/brands' do
+  Brand.create(name: params[:brand_name])
+  redirect '/admin'
 end
 
 post '/stores' do
   Store.create(name: params[:store_name])
-
   redirect '/admin'
 end
 
@@ -39,8 +44,18 @@ delete '/stores/:id' do
   redirect "/admin"
 end
 
+post '/stores/:id/brands' do
+  id = params[:id]
+  brand_id = params[:brand_id]
+  store = Store.find(id)
+  store.brands << Brand.find(brand_id)
+
+  redirect "/stores/#{id}/edit"
+end
+
 get '/stores/:id/edit' do
   @store = Store.find(params[:id])
-  @brands = @store.brands.order(:name)
+  @store_brands = @store.brands.order(:name)
+  @add_brands = Brand.order(:name) - @store_brands
   erb :admin_store
 end

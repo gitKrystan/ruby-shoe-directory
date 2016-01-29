@@ -18,13 +18,41 @@
         <button class="btn btn-danger" type="submit" name="_method" value="delete">Delete Store</button>
       </div><!-- /input-group -->
     </form>
+  </div>
+</div>
 
-    <% if @brands.any? %>
+<div class="row">
+  <!-- Brand List -->
+  <div class="col-sm-6 store-brand-list">
+    <% if @store_brands.any? %>
+      <h5>Brands carried by this store:</h5>
       <ul class="nav nav-pills nav-stacked">
-        <% @brands.each do |brand| %>
+        <% @store_brands.each do |brand| %>
           <li><a href="/brands/<%= brand.id %>/edit"><%= brand.name %></a></li>
         <% end %>
       </ul>
+    <% else %>
+      <h5>No brands currently carried.</h5>
+    <% end %>
+  </div>
+
+  <!-- Add Brand List -->
+  <div class="col-sm-6 add-brand-list">
+    <% if @add_brands.any? %>
+    <h5>Click to add brands to this store:</h5>
+      <ul class="nav nav-pills nav-stacked">
+        <% @add_brands.each do |brand| %>
+          <li>
+            <form action="/stores/<%= @store.id %>/brands" method="post">
+              <input hidden name="brand_id" value="<%= brand.id %>">
+              <button type="submit" class="btn btn-sm btn-default">Add <%= brand.name %></button>
+            </form>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h5>No brands to add.</h5>
+      <h5>Go to <a href="/admin">Admin Page</a> to add more brands.</h5>
     <% end %>
   </div>
 </div>

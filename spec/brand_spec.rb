@@ -7,4 +7,9 @@ describe(Brand) do
     store2 = create_test_store(brand)
     expect(brand.stores()).to(eq([store1, store2]))
   end
+
+  it('validates presence of name') do
+    test_brand = Brand.create(name: '')
+    expect(test_brand.save).to(eq(false))
+  end
 end

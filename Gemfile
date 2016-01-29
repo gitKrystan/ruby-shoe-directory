@@ -11,5 +11,4 @@ group(:test) do
   gem "capybara"
   gem "selenium-webdriver"
   gem "pry"
-  gem "shoulda-matchers"
 end

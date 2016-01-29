@@ -23,3 +23,19 @@ RSpec.configure do |config|
     end
   end
 end
+
+def create_test_store(brand = nil)
+  if brand
+    brand.stores.create(name: 'test store')
+  else
+    Store.create(name: 'test store')
+  end
+end
+
+def create_test_brand(store = nil)
+  if store
+    store.brands.create(name: 'test brand')
+  else
+    Brand.create(name: 'test brand')
+  end
+end

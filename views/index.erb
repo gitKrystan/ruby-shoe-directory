@@ -4,7 +4,7 @@
   <div class="row">
     <% @stores.each do |store| %>
       <a href="/stores/<%= store.id %>">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="well store-box <%= random_color_class %>">
             <h1><%= store.name %></h1>
           </div>

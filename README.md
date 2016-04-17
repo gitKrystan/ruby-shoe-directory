@@ -26,6 +26,6 @@ ruby app.rb
 
 ### License
 
-Copyright (c) 2015 Krystan Menne
+Copyright (c) 2016 Krystan Menne
 
 This software is licensed under the MIT license.
